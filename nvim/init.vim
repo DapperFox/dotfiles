@@ -36,8 +36,8 @@ cnoreabbrev ag Ack
 cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
 cnoreabbrev AG Ack
-vnoremap <C-s> y:Ack! <C-r>=fnameescape(@")<CR><CR>
-nnoremap <C-s> y:Ack! 
+vnoremap <C-b> y:Ack! <C-r>=fnameescape(@")<CR><CR>
+nnoremap <C-b> y:Ack! 
 
 ca tn tabnew
 ca th tabp
@@ -53,11 +53,13 @@ set smartindent
 set expandtab
 set nowrap
 
-map <C-t> :NERDTreeToggle<Enter>
+map <C-t> :NERDTreeTabsToggle<Enter>
 nnoremap <silent> <s-tab> :wincmd W<cr>
 nnoremap <silent> <tab> :wincmd w<cr>
 nnoremap <Leader>b :CtrlPBuffer<CR>
 
+let g:airline_theme='onedark'
+let g:airline#extensions#tabline#enabled = 1
 " Blink Cursor
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor

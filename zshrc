@@ -2,7 +2,7 @@ export ZSH=/Users/blake.bishop/.oh-my-zsh
 
 ZSH_THEME="clean"
 
-plugins=(git tmux)
+plugins=(git tmux npm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -38,3 +38,5 @@ jump_completion() {
 }
 
 compctl -U -K jump_completion j
+
+alias vim='mvim -v'
