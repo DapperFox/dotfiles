@@ -1,11 +1,11 @@
-if filereadable(expand("\~/.vim/plugins.vim"))
-  source \~/.vim/plugins.vim
+if filereadable(expand("\~/.config/nvim/config/plugins.vim"))
+  source \~/.config/nvim/config/plugins.vim
 endif
 
-if filereadable(expand("\~/.vim/general.vim"))
-  source \~/.vim/general.vim
+if filereadable(expand("\~/.config/nvim/config/general.vim"))
+  source \~/.config/nvim/config/general.vim
 endif
 
-if filereadable(expand("\~/.vim/vue.vim"))
-  source \~/.vim/vue.vim
+if filereadable(expand("\~/.config/nvim/config/vue.vim"))
+  source \~/.config/nvim/config/vue.vim
 endif

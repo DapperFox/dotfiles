@@ -10,7 +10,7 @@ syntax on
 colorscheme onedark
 filetype plugin on
 
-set guifont=FuraCode\ Nerd\ Font\ Mono:h12
+set guifont=FuraCode\ Nerd\ Font\ Mono:h14
 set clipboard=unnamed
 set number
 
@@ -34,12 +34,15 @@ set noerrorbells
 set tabstop=4
 set shiftwidth=4
 set cursorline
+set iskeyword+=\-
 " set lazyredraw
 
 ca tn tabnew
 ca th tabp
 ca tl tabn
 ca td tabclose
+
+nnoremap <silent> <C-c> :nohl<CR><C-c>
 
 " Blink Cursor
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50

@@ -28,6 +28,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'easymotion/vim-easymotion'
     Plug 'ervandew/supertab'
+    Plug 'tpope/vim-unimpaired'
         let g:SuperTabDefaultCompletionType = "<c-n>"
 " Syntax
     Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
@@ -50,4 +51,7 @@ call plug#begin('~/.config/nvim/plugged')
         let g:DevIconsEnableFoldersOpenClose = 1
         let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
         let g:webdevicons_enable_nerdtree = 0
+    Plug 'neomake/neomake'
+        " call neomake#configure#automake('rw', 1000)
+    Plug 'jaawerth/neomake-local-eslint-first'
 call plug#end()
