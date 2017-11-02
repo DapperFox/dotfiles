@@ -1,6 +1,5 @@
 autocmd FileType vue setlocal omnifunc=tern#Complete
-set tabstop=4
-set shiftwidth=4
+autocmd FileType vue syntax sync fromstart
 let g:vue_disable_pre_processors=1
 " Vue stuff, potentially slows down
 autocmd FileType vue syntax sync fromstart
