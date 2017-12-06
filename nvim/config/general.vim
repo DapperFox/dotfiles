@@ -33,7 +33,7 @@ set visualbell
 set noerrorbells
 set tabstop=4
 set shiftwidth=4
-set cursorline
+set cursorline!
 set iskeyword+=\-
 " set lazyredraw
 

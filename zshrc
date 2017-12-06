@@ -39,4 +39,7 @@ jump_completion() {
 
 compctl -U -K jump_completion j
 
-alias vim='mvim -v'
+if [ -f $HOME/.infusionsoft ]; then
+    source $HOME/.infusionsoft
+fi
+
