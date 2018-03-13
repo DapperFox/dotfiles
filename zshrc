@@ -16,6 +16,8 @@ if [ -f '/Users/blake.bishop/Infusion/google-cloud-sdk/path.zsh.inc' ]; then sou
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/blake.bishop/Infusion/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/blake.bishop/Infusion/google-cloud-sdk/completion.zsh.inc'; fi
 
+# Python 2 hack for node-gyp
+export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 
@@ -43,3 +45,10 @@ if [ -f $HOME/.infusionsoft ]; then
     source $HOME/.infusionsoft
 fi
 
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/blake.bishop/.nvm/versions/node/v8.9.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/blake.bishop/.nvm/versions/node/v8.9.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/blake.bishop/.nvm/versions/node/v8.9.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/blake.bishop/.nvm/versions/node/v8.9.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh

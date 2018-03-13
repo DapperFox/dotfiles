@@ -21,7 +21,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'ctrlpvim/ctrlp.vim'
         let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
         nnoremap <Leader>b :CtrlPBuffer<CR>
-    Plug 'mileszs/ack.vim'
     Plug 'ervandew/supertab'
     Plug 'airblade/vim-gitgutter'
     Plug 'jeetsukumaran/vim-buffergator'
@@ -32,32 +31,17 @@ call plug#begin('~/.config/nvim/plugged')
         let g:SuperTabDefaultCompletionType = "<c-n>"
     Plug 'terryma/vim-multiple-cursors'
     Plug 'ntpeters/vim-better-whitespace'
+    Plug 'andrewradev/linediff.vim'
 " Syntax
-    Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'carlitux/deoplete-ternjs'
-        let g:tern#command = ["tern"]
-        let g:tern#arguments = ["--persistent"]
-        let g:tern_show_argument_hints = 'on_hold'
-        let g:tern_show_signature_in_pum = 1
-        let g:deoplete#sources#ternjs#tern_bin = '/Users/blake.bishop/.nvm/versions/node/v8.1.4/bin/tern'
-        let g:deoplete#enable_at_startup = 1
-        autocmd FileType javascript setlocal omnifunc=tern#Complete
     Plug 'sheerun/vim-polyglot'
         let g:jsx_ext_required = 0
-    Plug 'mileszs/ack.vim'
-      if executable('ag')
-        let g:ackprg = 'ag --vimgrep'
-      endif
+    Plug 'jremmen/vim-ripgrep'
     Plug 'ryanoasis/vim-devicons'
         let g:WebDevIconsUnicodeDecorateFolderNodes = 1
         let g:DevIconsEnableFoldersOpenClose = 1
         let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
         let g:webdevicons_enable_nerdtree = 0
-    Plug 'neomake/neomake'
-        " call neomake#configure#automake('rw', 1000)
-    Plug 'jaawerth/neomake-local-eslint-first'
-    " LanguageClient plugin
     Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
         " Automatically start language servers.
         let g:LanguageClient_autoStart = 1
@@ -76,6 +60,19 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'junegunn/fzf'
     Plug 'roxma/nvim-completion-manager'
     Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+    Plug 'mattn/emmet-vim'
+    " Plug 'vim-syntastic/syntastic'
+        " set statusline+=%#warningmsg#
+        " set statusline+=%{SyntasticStatuslineFlag()}
+        " set statusline+=%*
+        " let g:syntastic_always_populate_loc_list = 1
+        " let g:syntastic_auto_loc_list = 1
+        " let g:syntastic_check_on_open = 1
+        " let g:syntastic_check_on_wq = 0
+        " let g:syntastic_javascript_checkers = ['eslint']
+        " let g:syntastic_html_checkers = []
+        " let g:syntastic_javascript_eslint_exec = 'npm run lint:js --'
+    Plug 'kristijanhusak/vim-carbon-now-sh'
 call plug#end()
 
 " <leader>ld to go to definition
