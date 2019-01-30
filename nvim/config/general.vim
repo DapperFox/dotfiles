@@ -31,8 +31,8 @@ set listchars=tab:>-,trail:-,nbsp:+
 set wildmenu
 set visualbell
 set noerrorbells
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set iskeyword+=\-
 set lazyredraw
 
@@ -42,8 +42,12 @@ ca tl tabn
 ca td tabclose
 
 nnoremap <silent> <C-c> :nohl<CR><C-c>
+" nnoremap <silent> <C-w> :Rg<CR>
 
 " Blink Cursor
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175
+
+let g:python_host_prog='/Users/dapperfox/.pyenv/versions/2.7.15/bin/python'
+let g:python3_host_prog='/Users/dapperfox/.pyenv/versions/3.7.0/bin/python'

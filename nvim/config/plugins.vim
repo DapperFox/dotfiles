@@ -3,14 +3,18 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'joshdick/onedark.vim'
     Plug 'vim-airline/vim-airline'
         let g:airline#extensions#tabline#enabled = 1
+        let g:airline#extensions#tabline#formatter = 'jsformatter'
+        let g:airline_powerline_fonts = 1
+        let g:airline#extensions#tabline#show_buffers = 0
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'Yggdroot/indentLine'
-        let g:indentLine_color_term = 233
-        let g:indentLine_leadingSpaceEnabled = 1
-        let g:indentLine_leadingSpaceChar = '.'
 " Functionality
+    Plug 'romainl/vim-cool'
+        let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+    Plug 'unblevable/quick-scope'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'scrooloose/nerdtree'
+        let g:NERDTreeWinPos = 'right'
+        let NERDTreeNodeDelimiter = "\u263a"
     Plug 'scrooloose/nerdcommenter'
         let g:NERDSpaceDelims = 1
     Plug 'jistr/vim-nerdtree-tabs'
@@ -41,7 +45,7 @@ call plug#begin('~/.config/nvim/plugged')
         let g:WebDevIconsUnicodeDecorateFolderNodes = 1
         let g:DevIconsEnableFoldersOpenClose = 1
         let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-        let g:webdevicons_enable_nerdtree = 0
+        let g:webdevicons_enable_nerdtree = 1
     Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
         " Automatically start language servers.
         let g:LanguageClient_autoStart = 1
@@ -58,21 +62,39 @@ call plug#begin('~/.config/nvim/plugged')
           :cq
         endif
     Plug 'junegunn/fzf'
-    Plug 'roxma/nvim-completion-manager'
-    Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+    Plug 'othree/javascript-libraries-syntax.vim'
+        let g:used_javascript_libs = 'react,ramda'
+    Plug 'othree/yajs'
+" NCM2
+    Plug 'roxma/nvim-yarp'
+    Plug 'ncm2/ncm2'
+        autocmd BufEnter * call ncm2#enable_for_buffer()
+        set completeopt=noinsert,menuone,noselect
+    Plug 'ncm2/ncm2-bufword'
+    Plug 'ncm2/ncm2-tmux'
+    Plug 'ncm2/ncm2-path'
+    Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+    Plug 'ncm2/ncm2-cssomni'
+
+    Plug 'ncm2/ncm2-ultisnips'
+    Plug 'SirVer/ultisnips'
+      inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+
+      " c-j c-k for moving in snippet
+      let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+      let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+      let g:UltiSnipsRemoveSelectModeMappings = 0
+
+    Plug 'jsfaint/ncm2-syntax'
+    Plug 'Shougo/neco-syntax'
+
     Plug 'mattn/emmet-vim'
-    " Plug 'vim-syntastic/syntastic'
-        " set statusline+=%#warningmsg#
-        " set statusline+=%{SyntasticStatuslineFlag()}
-        " set statusline+=%*
-        " let g:syntastic_always_populate_loc_list = 1
-        " let g:syntastic_auto_loc_list = 1
-        " let g:syntastic_check_on_open = 1
-        " let g:syntastic_check_on_wq = 0
-        " let g:syntastic_javascript_checkers = ['eslint']
-        " let g:syntastic_html_checkers = []
-        " let g:syntastic_javascript_eslint_exec = 'npm run lint:js --'
     Plug 'kristijanhusak/vim-carbon-now-sh'
+    Plug 'w0rp/ale'
+        let g:ale_linters = {'javascript': ['standard']}
+        au FileType javascript set formatprg=prettier-standard
+    Plug 'jparise/vim-graphql'
+    Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()
 
 " <leader>ld to go to definition
