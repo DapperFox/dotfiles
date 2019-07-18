@@ -51,3 +51,21 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 
 let g:python_host_prog='/Users/dapperfox/.pyenv/versions/2.7.15/bin/python'
 let g:python3_host_prog='/Users/dapperfox/.pyenv/versions/3.7.0/bin/python'
+
+" for gf file go to
+set path=.,src
+set suffixesadd=.js,.jsx
+
+function! LoadMainNodeModule(fname)
+    let nodeModules = "./node_modules/"
+    let packageJsonPath = nodeModules . a:fname . "/package.json"
+
+    if filereadable(packageJsonPath)
+        return nodeModules . a:fname . "/" . json_decode(join(readfile(packageJsonPath))).main
+    else
+        return nodeModules . a:fname
+    endif
+endfunction
+
+set includeexpr=LoadMainNodeModule(v:fname)
+

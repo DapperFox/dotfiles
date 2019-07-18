@@ -37,6 +37,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'andrewradev/linediff.vim'
 " Syntax
+    Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'sheerun/vim-polyglot'
         let g:jsx_ext_required = 0
