@@ -8,6 +8,7 @@ call plug#begin('~/.config/nvim/plugged')
         let g:airline#extensions#tabline#show_buffers = 0
     Plug 'vim-airline/vim-airline-themes'
 " Functionality
+    Plug 'k0kubun/vim-open-github'
     Plug 'romainl/vim-cool'
         let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
     Plug 'unblevable/quick-scope'
