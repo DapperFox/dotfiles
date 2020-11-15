@@ -7,7 +7,6 @@ call plug#begin('~/.config/nvim/plugged')
         let g:airline_powerline_fonts = 1
         let g:airline#extensions#tabline#show_buffers = 0
         let g:airline#extensions#ale#enabled = 1
-    Plug 'vim-airline/vim-airline-themes'
     Plug 'scrooloose/nerdtree'
         let g:NERDTreeWinPos = 'right'
         let NERDTreeNodeDelimiter = "\u263a"
@@ -53,20 +52,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'SirVer/ultisnips'
 " Syntax
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-        call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
-        let g:go_highlight_extra_types = 1
-        let g:go_highlight_operators = 1
-        let g:go_highlight_functions = 1
-        let g:go_highlight_function_parameters = 1
-        let g:go_highlight_function_calls = 1
-        let g:go_highlight_types = 1
-        let g:go_highlight_fields = 1
-        let g:go_highlight_build_constraints = 1
-        let g:go_highlight_generate_tags = 1
-        let g:go_highlight_variable_declarations = 1
-        let g:go_highlight_variable_assignments = 1
     Plug 'sheerun/vim-polyglot'
         let g:vim_jsx_pretty_colorful_config = 1
         let g:jsx_ext_required = 0
@@ -74,7 +59,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'othree/javascript-libraries-syntax.vim'
         let g:used_javascript_libs = 'react,ramda,underscore'
     Plug 'othree/yajs'
-    Plug 'Shougo/neco-syntax'
 " NCM2
     Plug 'roxma/nvim-yarp'
     Plug 'ncm2/ncm2'
@@ -85,16 +69,16 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'ncm2/ncm2-path'
     Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
     Plug 'ncm2/ncm2-cssomni'
-
     Plug 'ncm2/ncm2-ultisnips'
       inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 
-      " c-j c-k for moving in snippet
+      " control - j ccontrol - k for moving in snippet
       let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
       let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
       let g:UltiSnipsRemoveSelectModeMappings = 0
 
-    Plug 'jsfaint/ncm2-syntax'
+   Plug 'jsfaint/ncm2-syntax' | Plug 'Shougo/neco-syntax'
+   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " Linting
     Plug 'autozimu/LanguageClient-neovim', {
         \ 'branch': 'next',
@@ -103,17 +87,12 @@ call plug#begin('~/.config/nvim/plugged')
         " Automatically start language servers.
         set hidden
         let g:LanguageClient_useVirtualText = "No"
-
+"
         " Minimal LSP configuration for JavaScript
-        let g:LanguageClient_serverCommands = {}
-        if executable('javascript-typescript-stdio')
-          let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-          " Use LanguageServer for omnifunc completion
-          autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-        else
-          echo "javascript-typescript-stdio not installed!\n"
-          :cq
-        endif
+        let g:LanguageClient_serverCommands = {
+              \ 'javascript': ['/users/dapperfox/.nvm/versions/node/v12.13.1/bin/javascript-typescript-stdio'],
+        \ }
+        autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
         let g:LanguageClient_diagnosticsList = "Disabled"
         let g:LanguageClient_diagnosticsDisplay = {
           \1: {
@@ -148,19 +127,20 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'dense-analysis/ale'
       let g:ale_fixers = {'javascript': ['prettier_standard']}
       let g:ale_linters = {'javascript': ['']}
-      let g:ale_fix_on_save = 1
+      let g:ale_fix_on_save = 0
     Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()
 
+colorscheme onedark
 " <leader>ld to go to definition
-autocmd FileType javascript nnoremap <buffer>
-  \ <leader>ld :call LanguageClient_textDocument_definition()<cr>
-" <leader>lh for type info under cursor
-autocmd FileType javascript nnoremap <buffer>
-  \ <leader>lh :call LanguageClient_textDocument_hover()<cr>
-" <leader>lr to rename variable under cursor
-autocmd FileType javascript nnoremap <buffer>
-  \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
-" <leader>lf to fuzzy find the symbols in the current document
-autocmd FileType javascript nnoremap <buffer>
-  \ <leader>lf :call LanguageClient_textDocument_documentSymbol()<cr>
+" autocmd FileType javascript nnoremap <buffer>
+"   \ <leader>ld :call LanguageClient_textDocument_definition()<cr>
+"  <leader>lh for type info under cursor
+" autocmd FileType javascript nnoremap <buffer>
+"   \ <leader>lh :call LanguageClient_textDocument_hover()<cr>
+"  <leader>lr to rename variable under cursor
+" autocmd FileType javascript nnoremap <buffer>
+"   \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
+"  <leader>lf to fuzzy find the symbols in the current document
+" autocmd FileType javascript nnoremap <buffer>
+"   \ <leader>lf :call LanguageClient_textDocument_documentSymbol()<cr>

@@ -7,7 +7,6 @@ if (has("termguicolors"))
 endif
 
 syntax on
-colorscheme onedark
 filetype plugin on
 
 set guifont=FuraCode\ Nerd\ Font\ Mono:h14
@@ -42,7 +41,6 @@ ca tl tabn
 ca td tabclose
 
 nnoremap <silent> <C-c> :nohl<CR><C-c>
-" nnoremap <silent> <C-w> :Rg<CR>
 nmap ,cs :let @*=expand("%")<CR>
 nmap ,cl :let @*=expand("%:p")<CR>
 
@@ -53,7 +51,7 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 
 " Hard versions here, probably will break any moment
 let g:python_host_prog='/Users/dapperfox/.pyenv/versions/2.7.15/bin/python'
-let g:python3_host_prog='/Users/dapperfox/.pyenv/versions/3.7.0/bin/python'
+let g:python3_host_prog='/Users/dapperfox/.pyenv/versions/3.7.7/bin/python'
 let g:ruby_host_prog = '/usr/local/lib/ruby/gems/2.6.0/bin/neovim-ruby-host'
 
 " for gf file go to
@@ -72,4 +70,3 @@ function! LoadMainNodeModule(fname)
 endfunction
 
 set includeexpr=LoadMainNodeModule(v:fname)
-
