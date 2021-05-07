@@ -13,6 +13,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'scrooloose/nerdcommenter'
         let g:NERDSpaceDelims = 1
     Plug 'jistr/vim-nerdtree-tabs'
+        map <Leader>r :NERDTreeFind<cr>
+         " ^Find current file in tree
         map <C-t> :NERDTreeTabsToggle<Enter>
         let NERDTreeMinimalUI = 1
         let NERDTreeDirArrows = 1
@@ -32,7 +34,6 @@ call plug#begin('~/.config/nvim/plugged')
         let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
         let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
         nnoremap <Leader>b :CtrlPBuffer<CR>
-    Plug 'ervandew/supertab'
     Plug 'airblade/vim-gitgutter'
     Plug 'jeetsukumaran/vim-buffergator'
     Plug 'tpope/vim-fugitive'
@@ -47,18 +48,18 @@ call plug#begin('~/.config/nvim/plugged')
       let g:ackprg = 'rg --vimgrep --no-heading'
       cnoreabbrev Ack Ack!
       nnoremap <Leader>a :Ack!<Space>
-    Plug 'mattn/emmet-vim'
-    Plug 'kristijanhusak/vim-carbon-now-sh'
     Plug 'SirVer/ultisnips'
+    Plug 'psliwka/vim-smoothie'
 " Syntax
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'sheerun/vim-polyglot'
         let g:vim_jsx_pretty_colorful_config = 1
         let g:jsx_ext_required = 0
-    Plug 'junegunn/fzf'
     Plug 'othree/javascript-libraries-syntax.vim'
         let g:used_javascript_libs = 'react,ramda,underscore'
     Plug 'othree/yajs'
+    Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+    Plug 'pantharshit00/vim-prisma'
 " NCM2
     Plug 'roxma/nvim-yarp'
     Plug 'ncm2/ncm2'
@@ -77,8 +78,7 @@ call plug#begin('~/.config/nvim/plugged')
       let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
       let g:UltiSnipsRemoveSelectModeMappings = 0
 
-   Plug 'jsfaint/ncm2-syntax' | Plug 'Shougo/neco-syntax'
-   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+    Plug 'jsfaint/ncm2-syntax' | Plug 'Shougo/neco-syntax'
 " Linting
     Plug 'autozimu/LanguageClient-neovim', {
         \ 'branch': 'next',
@@ -128,7 +128,9 @@ call plug#begin('~/.config/nvim/plugged')
       let g:ale_fixers = {'javascript': ['prettier_standard']}
       let g:ale_linters = {'javascript': ['']}
       let g:ale_fix_on_save = 0
-    Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+    Plug 'sbdchd/neoformat'
+      autocmd BufWritePre *.js Neoformat
+      " Comment out for no save JS format
 call plug#end()
 
 colorscheme onedark

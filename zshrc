@@ -5,7 +5,7 @@ export NVM_DIR="$HOME/.nvm"
 
 ZSH_THEME="refined"
 
-plugins=(git tmux npm docker zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git tmux npm zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -24,12 +24,12 @@ j() {
 jump_completion() {
   reply=($(jump hint "$1" --smart))
 }
+
 export PATH="/usr/local/sbin:$PATH"
 compctl -U -K jump_completion j
 
 # eval "$(starship init zsh)"
 eval "$(pyenv init -)"
-eval $(thefuck --alias)
 
 # Aliases
 alias vim="nvim"
