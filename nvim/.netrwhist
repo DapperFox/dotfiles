@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/Users/blakebishop'
 let g:netrw_dirhist_2='/Users/dapperfox/Code/dotfiles/nvim'
 let g:netrw_dirhist_1='/Users/dapperfox/.config/nvim/config'
 let g:netrw_dirhist_0='/Users/dapperfox/.config/nvim'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_7='/Users/dapperfox/Code/dotfiles/nvim'
 let g:netrw_dirhist_6='/Users/dapperfox/.config/nvim/config'
 let g:netrw_dirhist_5='/Users/dapperfox/.config/nvim'
 let g:netrw_dirhist_4='/Users/dapperfox'
-let g:netrw_dirhist_3='/Users/dapperfox/Code/dotfiles/nvim'

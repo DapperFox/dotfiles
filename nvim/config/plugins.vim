@@ -90,7 +90,10 @@ call plug#begin('~/.config/nvim/plugged')
 "
         " Minimal LSP configuration for JavaScript
         let g:LanguageClient_serverCommands = {
-              \ 'javascript': ['/users/dapperfox/.nvm/versions/node/v12.13.1/bin/javascript-typescript-stdio'],
+              \ 'javascript': ['/users/blakebishop/.nvm/versions/node/v14.16.1/bin/javascript-typescript-stdio'],
+              \ 'typescript': ['/users/blakebishop/.nvm/versions/node/v14.16.1/bin/javascript-typescript-stdio', '--stdio'],
+              \ 'typescript.ts': ['/users/blakebishop/.nvm/versions/node/v14.16.1/bin/javascript-typescript-stdio', '--stdio'],
+              \ 'typescript.tsx': ['/users/blakebishop/.nvm/versions/node/v14.16.1/bin/javascript-typescript-stdio', '--stdio'],
         \ }
         autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
         let g:LanguageClient_diagnosticsList = "Disabled"
@@ -127,7 +130,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'dense-analysis/ale'
       let g:ale_fixers = {'javascript': ['prettier_standard']}
       let g:ale_linters = {'javascript': ['']}
-      let g:ale_fix_on_save = 0
+      let g:ale_fix_on_save = 1
     Plug 'sbdchd/neoformat'
       autocmd BufWritePre *.js Neoformat
       " Comment out for no save JS format

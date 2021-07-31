@@ -1,7 +1,8 @@
 export EDITOR='nvim'
-export ZSH=/Users/dapperfox/.oh-my-zsh
+export ZSH=/Users/blakebishop/.oh-my-zsh
 export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 ZSH_THEME="refined"
 
@@ -25,31 +26,23 @@ jump_completion() {
   reply=($(jump hint "$1" --smart))
 }
 
-export PATH="/usr/local/sbin:$PATH"
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export SBIN_ROOT="/usr/local/sbin"
+export PYENV_ROOT="$HOME/.pyenv"
+export RUBY_ROOT="/usr/local/opt/ruby/bin"
+export PATH="$SBIN_ROOT:$PYENV_ROOT/bin:$RUBY_ROOT:${GOPATH}/bin:${GOROOT}/bin:$PATH"
+
 compctl -U -K jump_completion j
 
 # eval "$(starship init zsh)"
-eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
 
 # Aliases
 alias vim="nvim"
 alias vimdiff="nvim -d"
-alias npmgL="npm list -g --depth=0"
+alias npmLg="npm list -g --depth=0"
 
-### Kuali ###
-alias ricedb="docker run --name fin-db -d -p 3306:3306 667650582711.dkr.ecr.us-west-2.amazonaws.com/fin-db:latest"
-alias rice="~/Kuali/fin/tomcat/bin/catalina.sh run"
-alias fin_clean="mvn clean package -DskipTests=true"
-alias pro_fix="docker-compose run --rm web npm install && docker-compose run --rm web npm rebuild node-sass"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-export PATH="/usr/local/opt/mongodb@3.4/bin:$PATH"
-function aws_login () {
-  saml2aws login -a ${*} --skip-prompt --session-duration 32400 --force
-}
-export AWS_SDK_LOAD_CONFIG=1
-
-# GO #
-export GOPATH="${HOME}/.go"
-export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+# Prenda
+alias dbs=". $HOME/Code/prendaworld/startSharedDbs.sh"
+alias pw="meteor run --settings settings.json --no-release-check"

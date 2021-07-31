@@ -1,15 +1,17 @@
+let g:nvcode_termcolors=256
 if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
 if (has("termguicolors"))
   set termguicolors
+  hi LineNr ctermbg=NONE guibg=NONE
 endif
-
+" Legit have no idea what the `hi` command does
 syntax on
 filetype plugin on
 
-set guifont=FuraCode\ Nerd\ Font\ Mono:h14
+set guifont=FiraCode\ Nerd\ Font\ Mono:h14
 set clipboard=unnamed
 set number
 
@@ -44,15 +46,10 @@ nnoremap <silent> <C-c> :nohl<CR><C-c>
 nmap ,cs :let @*=expand("%")<CR>
 nmap ,cl :let @*=expand("%:p")<CR>
 
-" Blink Cursor
-" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-  " \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-  " \,sm:block-blinkwait175-blinkoff150-blinkon175
-
 " Hard versions here, probably will break any moment
-let g:python_host_prog='/Users/dapperfox/.pyenv/versions/2.7.15/bin/python'
-let g:python3_host_prog='/Users/dapperfox/.pyenv/versions/3.9.0/bin/python'
-let g:ruby_host_prog = '/usr/local/lib/ruby/gems/2.6.0/bin/neovim-ruby-host'
+let g:python_host_prog='/Users/blakebishop/.pyenv/versions/2.7.16/bin/python'
+let g:python3_host_prog='/Users/blakebishop/.pyenv/versions/3.9.4/bin/python'
+let g:ruby_host_prog = '/usr/local/lib/ruby/gems/3.0.0/bin/neovim-ruby-host'
 
 " for gf file go to
 set path=.,src
