@@ -1,7 +1,8 @@
 local lualine = require('lualine')
 lualine.setup {
   options = {
-    theme = 'onedark'
+    theme = 'onedark',
+    section_separators = {'', ''},
   }
 }
 
@@ -17,7 +18,7 @@ treesitter.setup {
 }
 
 local telescope = require('telescope')
-telescope.setup{
+telescope.setup {
   defaults = {
     file_ignore_patterns = {"node_modules"}
   }

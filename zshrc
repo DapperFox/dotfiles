@@ -37,6 +37,7 @@ compctl -U -K jump_completion j
 
 # eval "$(starship init zsh)"
 eval "$(pyenv init --path)"
+eval $(thefuck --alias nope)
 
 # Aliases
 alias vim="nvim"
@@ -46,3 +47,4 @@ alias npmLg="npm list -g --depth=0"
 # Prenda
 alias dbs=". $HOME/Code/prendaworld/startSharedDbs.sh"
 alias pw="meteor run --settings settings.json --no-release-check"
+export PATH="/usr/local/opt/mongodb-community@4.4/bin:$PATH"
