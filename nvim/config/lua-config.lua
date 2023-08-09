@@ -1,14 +1,14 @@
 local lualine = require('lualine')
 lualine.setup {
   options = {
-    theme = 'onedark',
+    theme = 'nord',
     section_separators = {'', ''},
   }
 }
 
 local treesitter = require('nvim-treesitter.configs')
 treesitter.setup {
-  ensure_installed = 'maintained',
+  ensure_installed = {'elixir', 'javascript', 'graphql', 'html', 'http', 'json', 'markdown', 'prisma', 'typescript', 'vim', 'lua', 'sql', 'css', 'gitignore', 'dockerfile', 'comment'},
   highlight = {
     enable = true
   },

@@ -36,6 +36,8 @@ set tabstop=2
 set shiftwidth=2
 set iskeyword+=\-
 set lazyredraw
+" Disables mouse interaction
+set mouse=
 
 ca tn tabnew
 ca th tabp
@@ -47,9 +49,9 @@ nmap ,cs :let @*=expand("%")<CR>
 nmap ,cl :let @*=expand("%:p")<CR>
 
 " Hard versions here, probably will break any moment
-let g:python_host_prog='/Users/blakebishop/.pyenv/versions/2.7.16/bin/python'
-let g:python3_host_prog='/Users/blakebishop/.pyenv/versions/3.9.4/bin/python'
-let g:ruby_host_prog = '/usr/local/lib/ruby/gems/3.0.0/bin/neovim-ruby-host'
+let g:python_host_prog='/Users/dapperfox/.pyenv/versions/2.7.18/bin/python'
+let g:python3_host_prog='/Users/dapperfox/.pyenv/versions/3.10.2/bin/python'
+let g:ruby_host_prog = '/usr/local/bin/neovim-ruby-host'
 
 " for gf file go to
 set path=.,src

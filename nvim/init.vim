@@ -5,3 +5,7 @@ endif
 if filereadable(expand("\~/.config/nvim/config/general.vim"))
   source \~/.config/nvim/config/general.vim
 endif
+
+if filereadable(expand("\~/.config/nvim/config/shortcut-mapping.vim"))
+  source \~/.config/nvim/config/shortcut-mapping.vim
+endif

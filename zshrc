@@ -1,12 +1,12 @@
 export EDITOR='nvim'
-export ZSH=/Users/blakebishop/.oh-my-zsh
+export ZSH=/Users/dapperfox/.oh-my-zsh
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
 ZSH_THEME="refined"
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-plugins=(git tmux npm zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git tmux npm zsh-syntax-highlighting zsh-autosuggestions aliases brew autoenv)
 
 source $ZSH/oh-my-zsh.sh
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -26,6 +26,8 @@ jump_completion() {
   reply=($(jump hint "$1" --smart))
 }
 
+compctl -U -K jump_completion j
+
 export GOPATH="${HOME}/.go"
 export GOROOT="$(brew --prefix golang)/libexec"
 export SBIN_ROOT="/usr/local/sbin"
@@ -33,9 +35,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 export RUBY_ROOT="/usr/local/opt/ruby/bin"
 export PATH="$SBIN_ROOT:$PYENV_ROOT/bin:$RUBY_ROOT:${GOPATH}/bin:${GOROOT}/bin:$PATH"
 
-compctl -U -K jump_completion j
-
-# eval "$(starship init zsh)"
 eval "$(pyenv init --path)"
 eval $(thefuck --alias nope)
 
@@ -47,4 +46,9 @@ alias npmLg="npm list -g --depth=0"
 # Prenda
 alias dbs=". $HOME/Code/prendaworld/startSharedDbs.sh"
 alias pw="meteor run --settings settings.json --no-release-check"
+alias mkt="tmuxinator start mkt"
+alias pv="tmuxinator start pv"
 export PATH="/usr/local/opt/mongodb-community@4.4/bin:$PATH"
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+export PATH=/Users/dapperfox/.meteor:$PATH
