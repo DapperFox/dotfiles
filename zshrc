@@ -32,8 +32,9 @@ export GOPATH="${HOME}/.go"
 export GOROOT="$(brew --prefix golang)/libexec"
 export SBIN_ROOT="/usr/local/sbin"
 export PYENV_ROOT="$HOME/.pyenv"
-export RUBY_ROOT="/usr/local/opt/ruby/bin"
-export PATH="$SBIN_ROOT:$PYENV_ROOT/bin:$RUBY_ROOT:${GOPATH}/bin:${GOROOT}/bin:$PATH"
+export RUBY_ROOT="/opt/homebrew/opt/ruby/bin"
+export GEM_PATH="/opt/homebrew/lib/ruby/gems/3.3.0/bin"
+export PATH="$SBIN_ROOT:$PYENV_ROOT/bin:$RUBY_ROOT:$GEM_PATH:${GOPATH}/bin:${GOROOT}/bin:$PATH"
 
 eval "$(pyenv init --path)"
 eval $(thefuck --alias nope)
@@ -52,3 +53,21 @@ export PATH="/usr/local/opt/mongodb-community@4.4/bin:$PATH"
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 export PATH=/Users/dapperfox/.meteor:$PATH
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
+# bun completions
+[ -s "/Users/dapperfox/.bun/_bun" ] && source "/Users/dapperfox/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Added by Windsurf
+export PATH="/Users/dapperfox/.codeium/windsurf/bin:$PATH"
+
+# Created by `pipx` on 2025-09-17 17:27:56
+export PATH="$PATH:/Users/dapperfox/.local/bin"
+export PATH=/Users/dapperfox/.meteor:$PATH
+
+# OpenClaw Completion
+source "/Users/dapperfox/.openclaw/completions/openclaw.zsh"

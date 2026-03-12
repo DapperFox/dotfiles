@@ -1,0 +1,6 @@
+WRN 2025-10-03T22:17:46.554 ?.72037    server_start:193: Failed to start server: operation not permitted: /var/folders/qz/nmzcq6351jv9kqkpl4d776700000gn/T/nvim.dapperfox/DeZuOt/nvim.72037.0
+WRN 2026-03-10T09:36:54.581 ?.92819    server_start:199: Failed to start server: operation not permitted: /var/folders/qz/nmzcq6351jv9kqkpl4d776700000gn/T/nvim.dapperfox/AizZVw/nvim.92819.0
+WRN 2026-03-10T09:37:56.467 ?.92832    server_start:199: Failed to start server: operation not permitted: /var/folders/qz/nmzcq6351jv9kqkpl4d776700000gn/T/nvim.dapperfox/C3tGjK/nvim.92832.0
+WRN 2026-03-10T09:37:56.467 ?.92833    server_start:199: Failed to start server: operation not permitted: /var/folders/qz/nmzcq6351jv9kqkpl4d776700000gn/T/nvim.dapperfox/kpiACs/nvim.92833.0
+WRN 2026-03-10T09:37:56.469 ?.92834    server_start:199: Failed to start server: operation not permitted: /var/folders/qz/nmzcq6351jv9kqkpl4d776700000gn/T/nvim.dapperfox/rcZBhB/nvim.92834.0
+WRN 2026-03-10T09:39:06.814 ?.92848    server_start:199: Failed to start server: operation not permitted: /var/folders/qz/nmzcq6351jv9kqkpl4d776700000gn/T/nvim.dapperfox/8AD9iJ/nvim.92848.0
