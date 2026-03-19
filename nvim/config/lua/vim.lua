@@ -96,3 +96,41 @@ function _G.LoadMainNodeModule(fname)
 end
 
 vim.opt.includeexpr = "v:lua.LoadMainNodeModule(v:fname)"
+
+local startup_argv = vim.fn.argv()
+local startup_target = startup_argv[1]
+
+if #startup_argv == 1 and type(startup_target) == "string" and vim.fn.isdirectory(startup_target) == 1 then
+  local startup_dir = vim.fn.fnamemodify(startup_target, ":p")
+  local startup_group = vim.api.nvim_create_augroup("TelescopeDirectoryStartup", { clear = true })
+
+  vim.api.nvim_create_autocmd("VimEnter", {
+    group = startup_group,
+    once = true,
+    callback = function()
+      if #vim.api.nvim_list_uis() == 0 then
+        return
+      end
+
+      vim.schedule(function()
+        local ok, builtin = pcall(require, "telescope.builtin")
+        if not ok then
+          return
+        end
+
+        vim.api.nvim_set_current_dir(startup_dir)
+        pcall(vim.cmd, "NvimTreeClose")
+
+        local current_buf = vim.api.nvim_get_current_buf()
+        local current_name = vim.api.nvim_buf_get_name(current_buf)
+
+        if current_name ~= "" and vim.fn.isdirectory(current_name) == 1 and not vim.bo[current_buf].modified then
+          vim.cmd.enew()
+          pcall(vim.api.nvim_buf_delete, current_buf, { force = true })
+        end
+
+        builtin.find_files({ cwd = startup_dir })
+      end)
+    end,
+  })
+end
