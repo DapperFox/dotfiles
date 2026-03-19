@@ -1,9 +1,13 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+local python_provider = vim.fn.stdpath("config") .. "/.python-provider/bin/python"
+if vim.fn.executable(python_provider) == 1 then
+  vim.g.python3_host_prog = python_provider
+end
+
 vim.opt.termguicolors = true
 vim.opt.number = true
-vim.opt.relativenumber = true
 vim.opt.wrap = false
 vim.opt.clipboard = "unnamedplus"
 vim.opt.ignorecase = true

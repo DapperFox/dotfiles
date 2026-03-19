@@ -52,6 +52,7 @@ require("lazy").setup({
   "williamboman/mason-lspconfig.nvim",
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master",
     build = ":TSUpdate",
   },
   {
