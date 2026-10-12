@@ -16,6 +16,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   { "navarasu/onedark.nvim", priority = 1000 },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "nordtheme/vim", name = "nord", priority = 1000 },
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
@@ -23,28 +25,60 @@ require("lazy").setup({
       "nvim-tree/nvim-web-devicons",
     },
   },
-  "scrooloose/nerdcommenter",
   "romainl/vim-cool",
   "christoomey/vim-tmux-navigator",
   "lewis6991/gitsigns.nvim",
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
-  "easymotion/vim-easymotion",
-  "terryma/vim-multiple-cursors",
-  "ntpeters/vim-better-whitespace",
-  "psliwka/vim-smoothie",
   {
-    "SirVer/ultisnips",
-    dependencies = {
-      "honza/vim-snippets",
+    "folke/flash.nvim",
+    opts = {},
+    keys = {
+      {
+        "s",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump()
+        end,
+        desc = "Flash jump",
+      },
+      {
+        "S",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").treesitter()
+        end,
+        desc = "Flash treesitter select",
+      },
     },
   },
-  "pantharshit00/vim-prisma",
-  "styled-components/vim-styled-components",
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    opts = {},
+  },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {},
+  },
+  "mg979/vim-visual-multi",
+  "ntpeters/vim-better-whitespace",
+  {
+    "L3MON4D3/LuaSnip",
+    version = "v2.*",
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+    },
+  },
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+      },
     },
   },
   "neovim/nvim-lspconfig",
@@ -52,8 +86,9 @@ require("lazy").setup({
   "williamboman/mason-lspconfig.nvim",
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    branch = "main",
     build = ":TSUpdate",
+    lazy = false,
   },
   {
     "hoob3rt/lualine.nvim",

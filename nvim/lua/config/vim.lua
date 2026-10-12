@@ -1,11 +1,6 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-local python_provider = vim.fn.stdpath("config") .. "/.python-provider/bin/python"
-if vim.fn.executable(python_provider) == 1 then
-  vim.g.python3_host_prog = python_provider
-end
-
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.wrap = false
@@ -26,7 +21,6 @@ vim.opt.listchars = { tab = ">-", trail = "-", nbsp = "+" }
 vim.opt.wildmenu = true
 vim.opt.visualbell = true
 vim.opt.errorbells = false
-vim.opt.lazyredraw = true
 vim.opt.autoread = true
 vim.opt.display = "lastline"
 vim.opt.path = { ".", "src" }

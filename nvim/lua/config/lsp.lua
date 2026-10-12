@@ -105,7 +105,7 @@ local function format_with_lsp(bufnr)
     async = false,
     bufnr = bufnr,
     filter = function(client)
-      return client.name ~= "ts_ls"
+      return client.name ~= "ts_ls" and client.name ~= "tsc"
     end,
   })
 end
@@ -151,7 +151,7 @@ local function on_attach(client, bufnr)
     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true, desc = desc })
   end
 
-  if client.name == "ts_ls" then
+  if client.name == "ts_ls" or client.name == "tsc" then
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
   end
@@ -171,8 +171,12 @@ local function on_attach(client, bufnr)
   map("n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
   map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
   map("n", "<leader>d", vim.diagnostic.open_float, "Line diagnostics")
-  map("n", "[d", vim.diagnostic.goto_prev, "Previous diagnostic")
-  map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
+  map("n", "[d", function()
+    vim.diagnostic.jump({ count = -1, float = true })
+  end, "Previous diagnostic")
+  map("n", "]d", function()
+    vim.diagnostic.jump({ count = 1, float = true })
+  end, "Next diagnostic")
   map("n", "<leader>q", vim.diagnostic.setloclist, "Diagnostics list")
 end
 
@@ -185,9 +189,6 @@ local servers = {
   lua_ls = {
     settings = {
       Lua = {
-        diagnostics = {
-          globals = { "vim" },
-        },
         telemetry = {
           enable = false,
         },
@@ -198,7 +199,28 @@ local servers = {
     },
   },
   pyright = {},
-  ts_ls = {},
+  ts_ls = {
+    init_options = {
+      tsserver = {
+        -- Keep project SDKs first; TypeScript 7 globals no longer ship tsserver.js.
+        fallbackPath = vim.fn.stdpath("data") .. "/typescript-sdk/node_modules/typescript/lib/tsserver.js",
+      },
+    },
+  },
+}
+
+local typescript = require("config.typescript")
+local typescript_root = vim.lsp.config.ts_ls.root_dir
+servers.ts_ls.root_dir = typescript.root_dir("ts_ls", typescript_root)
+servers.tsc = {
+  root_dir = typescript.root_dir("tsc", typescript_root),
+  cmd = typescript.native_cmd,
+  capabilities = {
+    workspace = {
+      -- Let the native server watch files; Neovim's macOS watcher hit EMFILE.
+      didChangeWatchedFiles = { dynamicRegistration = false },
+    },
+  },
 }
 
 require("mason").setup()
@@ -227,18 +249,14 @@ vim.diagnostic.config({
     border = "rounded",
     source = "if_many",
   },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "E",
+      [vim.diagnostic.severity.WARN] = "W",
+      [vim.diagnostic.severity.INFO] = "I",
+      [vim.diagnostic.severity.HINT] = "H",
+    },
+  },
 })
-
-local signs = {
-  Error = "E",
-  Warn = "W",
-  Hint = "H",
-  Info = "I",
-}
-
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
 
 return M
